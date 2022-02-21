@@ -1,0 +1,7 @@
+- alias: Update Home Location
+  trigger:
+    - platform: state
+      entity_id: sensor.peplink_location
+  action:
+    - service: homeassistant.set_location
+      data: "{{ states('sensor.peplink_location') }}"

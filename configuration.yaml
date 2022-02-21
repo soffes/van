@@ -1,0 +1,17 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+sensor:
+  - platform: command_line
+    name: Peplink Location
+    unique_id: peplink_location
+    scan_interval: 300 # 5 minutes
+    command: python3 scripts/peplink.py
