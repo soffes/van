@@ -7,3 +7,9 @@ I’m just getting started so it’s all pretty minimal right now.
 ## Features
 
 * Sensor for where the van is that automatically updates the home’s location so weater and other location-based things stay in sync
+
+## Roadmap*
+
+See [the issues](https://github.com/soffes/van/issues) for what I’m planning to add. Feel free to comment on them if you have any ideas :)
+
+\* pun intended
