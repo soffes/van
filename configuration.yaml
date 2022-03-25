@@ -9,9 +9,5 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-sensor:
-  - platform: command_line
-    name: Peplink Location
-    unique_id: peplink_location
-    scan_interval: 300 # 5 minutes
-    command: python3 scripts/peplink.py
+modbus: !include integrations/modbus.yaml
+sensor: !include integrations/sensor.yaml
