@@ -1,0 +1,32 @@
+- name: Victron
+  type: tcp
+  host: !secret cerbo_host
+  port: 502
+  # sensors:
+  #   - name: "Grid Power"
+  #     scan_interval: 10
+  #     unit_of_measurement: "W"
+  #     slave: 100
+  #     address: 820
+
+  #   - name: "PV Power"
+  #     scan_interval: 10
+  #     unit_of_measurement: "W"
+  #     slave: 100
+  #     address: 850
+
+  #   - name: "AC Loads"
+  #     scan_interval: 10
+  #     unit_of_measurement: "W"
+  #     slave: 100
+  #     address: 817
+
+  #   - name: "Inverter State"
+  #     scan_interval: 10
+  #     slave: 246
+  #     address: 31
+
+  #   - name: "ESS State"
+  #     scan_interval: 10
+  #     slave: 100
+  #     address: 2900
