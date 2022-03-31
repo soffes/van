@@ -1,10 +1,10 @@
 # Tutorial: https://www.reddit.com/r/homeassistant/comments/nzimbj/tutorial_how_to_integrate_a_victron_inverter_into/
 #
 # Devices:
-#   MPPT: 224
-#   BMV: 226
-#   MultiPlus: 227
-#   System: 100
+#   BMV: 226 (com.victronenergy.battery)
+#   MPPT: 224 (com.victronenergy.solarcharger)
+#   MultiPlus: 227 (com.victronenergy.vebus)
+#   System: 100 (com.victronenergy.system)
 
 - name: Victron
   type: tcp
@@ -12,56 +12,132 @@
   port: 502
   sensors:
     # System
-    - name: Grid Power
-      unique_id: victron_grid_power
-      slave: 100
-      address: 820
-      device_class: power
-      unit_of_measurement: W
-      state_class: measurement
-
-    - name: AC Loads
-      unique_id: victron_ac_loads
+    - name: AC Load
+      unique_id: system_ac_consumption_1
       slave: 100
       address: 817
+      data_type: uint16
       device_class: power
       unit_of_measurement: W
       state_class: measurement
 
+    - name: Shore Power
+      unique_id: system_grid_l1
+      slave: 100
+      address: 820
+      data_type: int16
+      device_class: power
+      unit_of_measurement: W
+      state_class: measurement
+
+    - name: Battery Voltage
+      unique_id: system_battery_voltage
+      slave: 100
+      address: 840
+      data_type: uint16
+      scale: 0.1
+      device_class: power
+      unit_of_measurement: V
+
+    - name: Battery Current
+      unique_id: system_battery_current
+      slave: 100
+      address: 841
+      data_type: int16
+      scale: 0.1
+      device_class: power
+      unit_of_measurement: A
+
+    - name: Battery Power
+      unique_id: system_battery_power
+      slave: 100
+      address: 842
+      data_type: int16
+      device_class: power
+      unit_of_measurement: W
+
     - name: State of Charge
-      unique_id: victron_soc
+      unique_id: system_battery_state_of_charge
       slave: 100
       address: 843
+      data_type: uint16
       unit_of_measurement: "%"
 
-    - name: Battery Remaining
-      unique_id: victron_battery_remaining
+    - name: Battery State
+      unique_id: system_battery_state
+      slave: 100
+      address: 844
+      data_type: uint16
+
+    - name: Battery Consumed
+      unique_id: system_battery_consumed
+      slave: 100
+      address: 845
+      data_type: uint16
+      scale: 0.1
+      device_class: energy
+      unit_of_measurement: Ah
+      state_class: measurement
+
+    - name: Battery Time Remaining
+      unique_id: system_battery_time_to_go
       slave: 100
       address: 846
+      data_type: uint16
       unit_of_measurement: s
 
     # MPPT
-    - name: Solar Production
-      unique_id: mppt_solar_production
+    - name: Solar Yield Today
+      unique_id: solarcharger_yield_today
       slave: 224
-      address: 790
+      address: 784
+      data_type: uint16
+      scale: 0.1
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: measurement
+
+    - name: Solar Yield Yesterday
+      unique_id: solarcharger_yield_yesterday
+      slave: 224
+      address: 786
+      data_type: uint16
+      scale: 0.1
       device_class: energy
       unit_of_measurement: kWh
       state_class: measurement
 
     - name: PV Power
-      unique_id: mppt_pv_power
+      unique_id: solarcharger_pv_power
       slave: 224
       address: 789
+      data_type: uint16
       scale: 0.1
       device_class: power
       unit_of_measurement: W
 
-    # MultiPlus
-    - name: Grid Consumption
-      unique_id: multiplus_grid_consumption
-      slave: 227
-      address: 1030
+    - name: Solar Yield
+      unique_id: solarcharger_user_yield
+      slave: 224
+      address: 790
+      data_type: uint16
+      scale: 0.1
       device_class: energy
       unit_of_measurement: kWh
       state_class: measurement
+
+    # MultiPlus
+    - name: Shore Power Current Limit
+      unique_id: vebus_active_input_current_limit
+      slave: 227
+      address: 22
+      data_type: int16
+      scale: 0.1
+      device_class: power
+      unit_of_measurement: A
+
+    - name: Inverter Disabled
+      unique_id: vebus_disable_pv_inverter
+      slave: 227
+      address: 56
+      data_type: uint16

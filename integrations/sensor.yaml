@@ -3,3 +3,12 @@
   unique_id: peplink_location
   scan_interval: 300 # 5 minutes
   command: python3 scripts/peplink.py
+
+- platform: template
+  sensors:
+    battery_state:
+      unique_id: battery_state
+      value_template: >
+        {% if states.sensor.battery_state_int.state == '0' %}Idle{% elif states.sensor.battery_state_int.state == '1' %}Charging{% elif states.sensor.battery_state_int.state == '2' %}Discharging{% endif %}
+      icon_template: >
+        {% if states.sensor.battery_state_int.state == '0' %}mdi:battery{% elif states.sensor.battery_state_int.state == '1' %}mdi:battery-arrow-up{% elif states.sensor.battery_state_int.state == '2' %}mdi:battery-arrow-down{% endif %}
