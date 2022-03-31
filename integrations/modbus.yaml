@@ -1,32 +1,67 @@
+# Tutorial: https://www.reddit.com/r/homeassistant/comments/nzimbj/tutorial_how_to_integrate_a_victron_inverter_into/
+#
+# Devices:
+#   MPPT: 224
+#   BMV: 226
+#   MultiPlus: 227
+#   System: 100
+
 - name: Victron
   type: tcp
   host: !secret cerbo_host
   port: 502
-  # sensors:
-  #   - name: "Grid Power"
-  #     scan_interval: 10
-  #     unit_of_measurement: "W"
-  #     slave: 100
-  #     address: 820
+  sensors:
+    # System
+    - name: Grid Power
+      unique_id: victron_grid_power
+      slave: 100
+      address: 820
+      device_class: power
+      unit_of_measurement: W
+      state_class: measurement
 
-  #   - name: "PV Power"
-  #     scan_interval: 10
-  #     unit_of_measurement: "W"
-  #     slave: 100
-  #     address: 850
+    - name: AC Loads
+      unique_id: victron_ac_loads
+      slave: 100
+      address: 817
+      device_class: power
+      unit_of_measurement: W
+      state_class: measurement
 
-  #   - name: "AC Loads"
-  #     scan_interval: 10
-  #     unit_of_measurement: "W"
-  #     slave: 100
-  #     address: 817
+    - name: State of Charge
+      unique_id: victron_soc
+      slave: 100
+      address: 843
+      unit_of_measurement: "%"
 
-  #   - name: "Inverter State"
-  #     scan_interval: 10
-  #     slave: 246
-  #     address: 31
+    - name: Battery Remaining
+      unique_id: victron_battery_remaining
+      slave: 100
+      address: 846
+      unit_of_measurement: s
 
-  #   - name: "ESS State"
-  #     scan_interval: 10
-  #     slave: 100
-  #     address: 2900
+    # MPPT
+    - name: Solar Production
+      unique_id: mppt_solar_production
+      slave: 224
+      address: 790
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: measurement
+
+    - name: PV Power
+      unique_id: mppt_pv_power
+      slave: 224
+      address: 789
+      scale: 0.1
+      device_class: power
+      unit_of_measurement: W
+
+    # MultiPlus
+    - name: Grid Consumption
+      unique_id: multiplus_grid_consumption
+      slave: 227
+      address: 1030
+      device_class: energy
+      unit_of_measurement: kWh
+      state_class: measurement
