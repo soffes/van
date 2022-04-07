@@ -22,11 +22,38 @@ captive_portal:
 
 light:
   - platform: monochromatic
-    output: gpio_2
-    name: Ceiling Lights
+    output: lights1
+    name: Ceiling Lights 1
+
+  - platform: monochromatic
+    output: lights2
+    name: Ceiling Lights 2
+
+  - platform: monochromatic
+    output: lights3
+    name: Ceiling Lights 3
+
+  - platform: monochromatic
+    output: lights4
+    name: Ceiling Lights 4
 
 output:
   - platform: ledc
-    pin: GPIO2
-    id: gpio_2
+    pin: GPIO15
+    id: lights1
+    frequency: 1220Hz
+
+  - platform: ledc
+    pin: GPIO5
+    id: lights2
+    frequency: 1220Hz
+
+  - platform: ledc
+    pin: GPIO19
+    id: lights3
+    frequency: 1220Hz
+
+  - platform: ledc
+    pin: GPIO23
+    id: lights4
     frequency: 1220Hz
