@@ -39,21 +39,21 @@ light:
 
 output:
   - platform: ledc
-    pin: GPIO15
+    pin: GPIO27
     id: lights1
     frequency: 1220Hz
 
   - platform: ledc
-    pin: GPIO5
+    pin: GPIO14
     id: lights2
     frequency: 1220Hz
 
   - platform: ledc
-    pin: GPIO19
+    pin: GPIO12
     id: lights3
     frequency: 1220Hz
 
   - platform: ledc
-    pin: GPIO23
+    pin: GPIO13
     id: lights4
     frequency: 1220Hz
