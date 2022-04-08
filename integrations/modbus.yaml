@@ -5,6 +5,9 @@
 #   MPPT: 224 (com.victronenergy.solarcharger)
 #   MultiPlus: 227 (com.victronenergy.vebus)
 #   System: 100 (com.victronenergy.system)
+#   Fresh Water Tank: 20 (com.victronenergy.tank)
+#   Gray Water Tank: 21 (com.victronenergy.tank)
+#   Urine Tank: 22 (com.victronenergy.tank)
 
 - name: Victron
   type: tcp
