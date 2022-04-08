@@ -1,0 +1,8 @@
+ceiling_lights:
+  name: Ceiling Lights
+  icon: mdi:light-recessed
+  entities:
+    - light.ceiling_lights_1
+    - light.ceiling_lights_2
+    - light.ceiling_lights_3
+    - light.ceiling_lights_4
