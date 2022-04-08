@@ -1,0 +1,11 @@
+- alias: Toggle ceiling lights
+  trigger:
+    # Cab Button
+    device_id: 5b0590b85ec792d6b778d9d9a9ffb6c3
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: remote_button_short_press
+  action:
+    service: homeassistant.toggle
+    entity_id: group.ceiling_lights
