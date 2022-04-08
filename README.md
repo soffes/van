@@ -7,6 +7,8 @@ I’m just getting started so it’s all pretty minimal right now.
 ## Features
 
 * Sensor for where the van is that automatically updates the home’s location so weater and other location-based things stay in sync
+* Dimmer for ceiling lights
+* Buttons to control ceiling lights
 
 ## Roadmap*
 
