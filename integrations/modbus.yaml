@@ -85,13 +85,6 @@
       unit_of_measurement: Ah
       state_class: measurement
 
-    - name: Battery Time Remaining
-      unique_id: system_battery_time_to_go
-      slave: 100
-      address: 846
-      data_type: uint16
-      unit_of_measurement: s
-
     # MPPT
     - name: Solar Yield Today
       unique_id: solarcharger_yield_today
