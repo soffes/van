@@ -22,17 +22,9 @@ captive_portal:
 
 switch:
   - platform: gpio
-    name: Fresh Water Tank Drain Open
-    pin: GPIO2
+    name: Fresh Water Dump Valve
+    pin: GPIO5
 
   - platform: gpio
-    name: Fresh Water Tank Drain Close
-    pin: GPIO4
-
-  - platform: gpio
-    name: Gray Water Tank Drain Open
+    name: Gray Water Dump Valve
     pin: GPIO18
-
-  - platform: gpio
-    name: Gray Water Tank Drain Close
-    pin: GPIO19
