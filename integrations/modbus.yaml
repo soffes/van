@@ -15,24 +15,6 @@
   port: 502
   sensors:
     # System
-    - name: AC Load
-      unique_id: system_ac_consumption_1
-      slave: 100
-      address: 817
-      data_type: uint16
-      device_class: power
-      unit_of_measurement: W
-      state_class: measurement
-
-    - name: Shore Power
-      unique_id: system_grid_l1
-      slave: 100
-      address: 820
-      data_type: int16
-      device_class: power
-      unit_of_measurement: W
-      state_class: measurement
-
     - name: Battery Voltage
       unique_id: system_battery_voltage
       slave: 100
@@ -130,6 +112,15 @@
       state_class: measurement
 
     # MultiPlus
+    - name: AC Load
+      unique_id: vebus_output_power_1
+      slave: 227
+      address: 23
+      data_type: int16
+      device_class: power
+      unit_of_measurement: W
+      state_class: measurement
+
     - name: Shore Power Current Limit
       unique_id: vebus_active_input_current_limit
       slave: 227
@@ -140,8 +131,46 @@
       device_class: power
       unit_of_measurement: A
 
+    - name: Shore Power
+      unique_id: vebus_input_power_1
+      slave: 227
+      address: 12
+      data_type: int16
+      device_class: power
+      unit_of_measurement: W
+
     - name: Inverter Disabled
       unique_id: vebus_disable_pv_inverter
       slave: 227
       address: 56
       data_type: uint16
+
+    # Fresh Water Tank
+    - name: Fresh Water Tank Level
+      unique_id: fresh_water_tank_level
+      slave: 20
+      address: 3004
+      data_type: uint16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: "%"
+
+    # Gray Water Tank
+    - name: Gray Water Tank Level
+      unique_id: gray_water_tank_level
+      slave: 21
+      address: 3004
+      data_type: uint16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: "%"
+
+    # Urine Tank
+    - name: Urine Tank Level
+      unique_id: urine_tank_level
+      slave: 22
+      address: 3004
+      data_type: uint16
+      scale: 0.1
+      precision: 1
+      unit_of_measurement: "%"

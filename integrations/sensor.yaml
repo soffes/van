@@ -6,8 +6,28 @@
 
 - platform: template
   sensors:
+    state_of_charge:
+      unique_id: state_of_charge
+      friendly_name: State of Charge
+      unit_of_measurement: "%"
+      device_class: battery
+      value_template: >
+        {% set consumed = states('sensor.battery_consumed') | float %}
+        {% set soc_int = states('sensor.state_of_charge_int') | float | round(1) %}
+        {% set soc = (((600.0 - consumed) / 600.0) * 100.0) | round(1) %}
+        {% if soc == 100 and soc_int < 100 %}{{ soc_int }}{% else %}{{ soc }}{% endif %}
+
+    battery_power:
+      unique_id: battery_power
+      friendly_name: Battery Power
+      unit_of_measurement: W
+      device_class: power
+      value_template: >
+        {{ ((states.sensor.battery_voltage.state | float) * (states.sensor.battery_current.state | float)) | round(1) }}
+
     battery_state:
       unique_id: battery_state
+      friendly_name: Battery State
       value_template: >
         {% if states.sensor.battery_state_int.state == '0' %}Idle{% elif states.sensor.battery_state_int.state == '1' %}Charging{% elif states.sensor.battery_state_int.state == '2' %}Discharging{% endif %}
       icon_template: >
