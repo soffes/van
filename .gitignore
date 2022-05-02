@@ -24,3 +24,6 @@ __pycache__
 # Default blueprints
 blueprints/automation/homeassistant
 blueprints/script/homeassistant
+
+# HACS
+/custom_components/hacs
