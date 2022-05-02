@@ -1,0 +1,50 @@
+- alias: Notify when running low on fresh water
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.fresh_water_tank_level
+    below: 30
+    for:
+      minutes: 10
+  action:
+    service: notify.mobile_app_iphone
+    data:
+      title: 💧 Running Low
+      message: Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%
+      data:
+        tag: fresh-water
+      target:
+        - person.sam
+
+- alias: Notify when gray water tank is getting full
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.gray_water_tank_level
+    above: 70
+    for:
+      minutes: 1
+  action:
+    service: notify.mobile_app_iphone
+    data:
+      title: 💦 Getting Full
+      message: Gray water tank level at {{ states("sensor.fresh_water_tank_level") }}%
+      data:
+        tag: gray-water
+      target:
+        - person.sam
+
+- alias: Notify when urine tank is getting full
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.urine_tank_level
+    above: 70
+    for:
+      minutes: 1
+  action:
+    service: notify.mobile_app_iphone
+    data:
+      title: 🚽 Empty Urine Tank Now
+      message: Urine tank level at {{ states("sensor.fresh_water_tank_level") }}%
+      data:
+        tag: gray-water
+      target:
+        - person.sam

@@ -1,0 +1,16 @@
+- alias: Notify when fully charged
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.state_of_charge_int
+    above: 99
+    for:
+      minutes: 10
+  action:
+    service: notify.mobile_app_iphone
+    data:
+      title: 🔋 Fully charged!
+      message: Batteries at {{ states("sensor.state_of_charge") }}%
+      data:
+        tag: batteries
+      target:
+        - person.sam
