@@ -14,3 +14,29 @@
         tag: batteries
       target:
         - person.sam
+
+- alias: Update inverter input boolean
+  trigger:
+    - platform: state
+      entity_id: sensor.inverter_state_int
+    - platform: homeassistant
+      event: start
+  action:
+    service: script.update_inverter
+
+- alias: Control inverter
+  trigger:
+    platform: state
+    entity_id: input_boolean.inverter
+  action:
+    service: modbus.write_register
+    data:
+      address: 33
+      unit: 227
+      hub: Victron
+      value: >
+        {% if states('input_boolean.inverter') == 'on' %}
+          3
+        {% else %}
+          4
+        {% endif %}

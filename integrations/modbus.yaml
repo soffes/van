@@ -112,6 +112,12 @@
       state_class: measurement
 
     # MultiPlus
+    - name: Inverter State Int
+      unique_id: vebus_switch_position
+      slave: 227
+      address: 33
+      data_type: int16
+
     - name: AC Load
       unique_id: vebus_output_power_1
       slave: 227
@@ -138,12 +144,6 @@
       data_type: int16
       device_class: power
       unit_of_measurement: W
-
-    - name: Inverter Disabled
-      unique_id: vebus_disable_pv_inverter
-      slave: 227
-      address: 56
-      data_type: uint16
 
     # Fresh Water Tank
     - name: Fresh Water Tank Level

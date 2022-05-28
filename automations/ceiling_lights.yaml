@@ -13,6 +13,14 @@
       platform: device
       type: remote_button_short_press
       subtype: remote_button_short_press
+
+    # Bed Button
+    - device_id: 059bee951caaff25bc67695ef0d50324
+      domain: zha
+      platform: device
+      type: remote_button_short_press
+      subtype: remote_button_short_press
+
   action:
     service: homeassistant.toggle
     entity_id: group.ceiling_lights

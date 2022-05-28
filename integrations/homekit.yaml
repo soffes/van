@@ -1,0 +1,11 @@
+- filter:
+    include_domains:
+      - light
+      - switch
+    exclude_entities:
+      - light.hot_water_heater_on_off
+  entity_config:
+    switch.fresh_water_dump_valve:
+      type: valve
+    switch.gray_water_dump_valve:
+      type: valve

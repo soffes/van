@@ -1,0 +1,37 @@
+- name: Bedtime
+  entities:
+    light.ceiling_lights_1:
+      state: "off"
+    light.ceiling_lights_2:
+      state: "off"
+    light.ceiling_lights_3:
+      state: "on"
+      brightness: 51
+    light.ceiling_lights_4:
+      state: "off"
+
+- name: Goodnight
+  entities:
+    light.ceiling_lights_1:
+      state: "off"
+    light.ceiling_lights_2:
+      state: "off"
+    light.ceiling_lights_3:
+      state: "off"
+    light.ceiling_lights_4:
+      state: "off"
+
+- name: Bright
+  entities:
+    light.ceiling_lights_1:
+      state: "on"
+      brightness: 255
+    light.ceiling_lights_2:
+      state: "on"
+      brightness: 255
+    light.ceiling_lights_3:
+      state: "on"
+      brightness: 255
+    light.ceiling_lights_4:
+      state: "on"
+      brightness: 255

@@ -2,7 +2,7 @@
   name: Peplink Location
   unique_id: peplink_location
   scan_interval: 300 # 5 minutes
-  command: python3 scripts/peplink.py
+  command: python3 cli-scripts/peplink.py
 
 - platform: template
   sensors:
@@ -16,6 +16,13 @@
         {% set soc_int = states('sensor.state_of_charge_int') | float | round(1) %}
         {% set soc = (((600.0 - consumed) / 600.0) * 100.0) | round(1) %}
         {% if soc == 100 and soc_int < 100 %}{{ soc_int }}{% else %}{{ soc }}{% endif %}
+
+    inverter_state:
+      unique_id: inverter_state
+      friendly_name: Inverter State
+      value_template: >
+        {% set state = states('sensor.inverter_state_int') | int %}
+        {% if state == 1 %}Charger Only{% elif state == 2 %}Inverter Only{% elif state == 3 %}On{% else %}Off{% endif %}
 
     battery_power:
       unique_id: battery_power
