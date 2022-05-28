@@ -20,7 +20,32 @@
       platform: device
       type: remote_button_short_press
       subtype: remote_button_short_press
-
   action:
     service: homeassistant.toggle
     entity_id: group.ceiling_lights
+
+- alias: Trigger bright scene
+  trigger:
+    # Cab Button
+    - device_id: 5b0590b85ec792d6b778d9d9a9ffb6c3
+      domain: zha
+      platform: device
+      type: remote_button_double_press
+      subtype: remote_button_double_press
+
+    # Kitchen Button
+    - device_id: dd28c6481f606c0fb8a15d8c122c19f2
+      domain: zha
+      platform: device
+      type: remote_button_double_press
+      subtype: remote_button_double_press
+
+    # Bed Button
+    - device_id: 059bee951caaff25bc67695ef0d50324
+      domain: zha
+      platform: device
+      type: remote_button_double_press
+      subtype: remote_button_double_press
+  action:
+    service: homeassistant.turn_on
+    entity_id: scene.bright
