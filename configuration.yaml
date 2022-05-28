@@ -3,10 +3,12 @@ default_config:
 
 # Core
 automation: !include_dir_merge_list automations
+script: !include_dir_merge_list scripts
 
 # Integrations
 group: !include integrations/group.yaml
 homekit: !include integrations/homekit.yaml
+input_boolean: !include integrations/input_boolean.yaml
 modbus: !include integrations/modbus.yaml
 scene: !include integrations/scene.yaml
 sensor: !include integrations/sensor.yaml

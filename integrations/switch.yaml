@@ -1,28 +1,11 @@
 - platform: template
   switches:
-    inverter:
-      unique_id: inverter
-      friendly_name: Inverter
-      value_template: "{{ is_state('sensor.inverter_state_int', '3') }}"
-      turn_on:
-        service: modbus.write_register
-        data:
-          address: 33
-          unit: 227
-          hub: Victron
-          value: 3
-      turn_off:
-        service: modbus.write_register
-        data:
-          address: 33
-          unit: 227
-          hub: Victron
-          value: 4
-
     hot_water_heater:
       unique_id: hot_water_heater
       friendly_name: Hot Water Heater
-      value_template: "{{ is_state('light.hot_water_heater_on_off', 'on') }}"
+      icon_template: mdi:water-boiler
+      value_template: >
+        {{ is_state('light.hot_water_heater_on_off', 'on') }}
       turn_on:
         service: homeassistant.turn_on
         target:

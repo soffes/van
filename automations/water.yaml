@@ -48,3 +48,27 @@
         tag: gray-water
       target:
         - person.sam
+
+- alias: Close gray water valve
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.gray_water_tank_level
+    below: 1
+    for:
+      minutes: 1
+  action:
+    service: homeassistant.turn_off
+    target:
+      entity_id: switch.gray_water_dump_valve
+
+- alias: Close fresh water valve
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.fresh_water_tank_level
+    below: 1
+    for:
+      minutes: 1
+  action:
+    service: homeassistant.turn_off
+    target:
+      entity_id: switch.fresh_water_dump_valve

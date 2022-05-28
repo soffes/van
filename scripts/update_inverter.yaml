@@ -1,0 +1,24 @@
+update_inverter:
+  sequence:
+    - if:
+        - condition: state
+          entity_id: input_boolean.inverter
+          state: "on"
+      then:
+        service: modbus.write_register
+        data:
+          address: 33
+          unit: 227
+          hub: Victron
+          value: 3
+    - if:
+        - condition: state
+          entity_id: input_boolean.inverter
+          state: "off"
+      then:
+        service: modbus.write_register
+        data:
+          address: 33
+          unit: 227
+          hub: Victron
+          value: 4
