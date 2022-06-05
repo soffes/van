@@ -1,0 +1,6 @@
+ceiling_fan_direction:
+  name: Ceiling Fan Direction
+  icon: mdi:fan
+  options:
+    - forward
+    - reverse

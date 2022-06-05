@@ -1,0 +1,31 @@
+- alias: Control ceiling fan on/off
+  trigger:
+    platform: state
+    entity_id: input_boolean.ceiling_fan_on_off
+  action:
+    - service: button.press
+      target:
+        entity_id: "button.ceiling_fan_{{ states('input_boolean.ceiling_fan_on_off') }}"
+
+- alias: Control ceiling fan speed
+  trigger:
+    platform: state
+    entity_id: input_number.ceiling_fan_speed
+  action:
+    - service: button.press
+      target:
+        entity_id: "button.ceiling_fan_{{ states('input_number.ceiling_fan_speed') | int }}"
+
+- alias: Control ceiling fan direction
+  trigger:
+    platform: state
+    entity_id: input_select.ceiling_fan_direction
+  action:
+    - service: button.press
+      target:
+        entity_id: >
+          {% if is_state("input_select.ceiling_fan_direction", "forward") %}
+            button.ceiling_fan_in
+          {% else %}
+            button.ceiling_fan_out
+          {% endif %}

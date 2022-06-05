@@ -1,3 +1,7 @@
 inverter:
   name: Inverter
   icon: mdi:dip-switch
+
+ceiling_fan_on_off:
+  name: Ceiling Fan On/Off
+  icon: mdi:fan

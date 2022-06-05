@@ -1,0 +1,6 @@
+ceiling_fan_speed:
+  name: Ceiling Fan Speed
+  initial: 10
+  min: 10
+  max: 100
+  step: 10

@@ -1,0 +1,28 @@
+- platform: template
+  fans:
+    ceiling_fan:
+      friendly_name: "Ceiling Fan"
+      value_template: "{{ states('input_boolean.ceiling_fan_on_off') }}"
+      percentage_template: "{{ states('input_number.ceiling_fan_speed') }}"
+      direction_template: "{{ states('input_select.direction') }}"
+      turn_on:
+        service: input_boolean.turn_on
+        target:
+          entity_id: input_boolean.ceiling_fan_on_off
+      turn_off:
+        service: input_boolean.turn_off
+        target:
+          entity_id: input_boolean.ceiling_fan_on_off
+      set_percentage:
+        service: input_number.set_value
+        target:
+          entity_id: input_number.ceiling_fan_speed
+        data:
+          value: "{{ percentage }}"
+      set_direction:
+        service: input_select.select_option
+        target:
+          entity_id: input_select.ceiling_fan_direction
+        data:
+          option: "{{ direction }}"
+      speed_count: 10
