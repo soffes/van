@@ -24,9 +24,6 @@ wifi:
   power_save_mode: NONE
 
 web_server:
-  auth:
-    username: admin
-    password: !secret esphome_valves_password
   local: true
   ota: false
 

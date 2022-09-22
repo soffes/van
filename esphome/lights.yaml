@@ -22,9 +22,6 @@ wifi:
   fast_connect: true
 
 web_server:
-  auth:
-    username: admin
-    password: !secret esphome_lights_password
   local: true
   ota: false
 
@@ -32,36 +29,40 @@ light:
   - platform: monochromatic
     output: lights1
     name: Ceiling Lights 1
+    icon: mdi:light-recessed
+    restore_mode: RESTORE_DEFAULT_ON
 
   - platform: monochromatic
     output: lights2
     name: Ceiling Lights 2
+    icon: mdi:light-recessed
+    restore_mode: RESTORE_DEFAULT_ON
 
   - platform: monochromatic
     output: lights3
     name: Ceiling Lights 3
+    icon: mdi:light-recessed
+    restore_mode: RESTORE_DEFAULT_ON
 
   - platform: monochromatic
     output: lights4
     name: Ceiling Lights 4
+    icon: mdi:light-recessed
+    restore_mode: RESTORE_DEFAULT_ON
 
 output:
   - platform: ledc
-    pin: GPIO27
     id: lights1
-    frequency: 1220Hz
-
-  - platform: ledc
-    pin: GPIO14
-    id: lights2
-    frequency: 1220Hz
-
-  - platform: ledc
-    pin: GPIO12
-    id: lights3
-    frequency: 1220Hz
-
-  - platform: ledc
     pin: GPIO13
+
+  - platform: ledc
+    id: lights2
+    pin: GPIO25
+
+  - platform: ledc
+    id: lights3
+    pin: GPIO14
+
+  - platform: ledc
     id: lights4
-    frequency: 1220Hz
+    pin: GPIO27
