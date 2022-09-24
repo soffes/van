@@ -27,3 +27,5 @@ blueprints/script/homeassistant
 
 # HACS
 /custom_components/hacs
+
+/.vscode

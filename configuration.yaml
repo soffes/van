@@ -4,7 +4,7 @@ default_config:
 # Core
 automation: !include_dir_merge_list automations
 group: !include integrations/group.yaml
-script: !include_dir_merge_list scripts
+script: !include_dir_merge_named scripts
 
 # Integrations
 fan: !include integrations/fan.yaml
