@@ -38,7 +38,7 @@
       unit_of_measurement: Wh
       device_class: energy
       value_template: >
-        {{ ((states.sensor.battery_consumed.state | float) * (states.sensor.battery_voltage.state | float)) | round(1) }}
+        {{ ((states.sensor.battery_consumed_ah.state | float) * (states.sensor.battery_voltage.state | float)) | round(1) }}
 
     battery_state:
       unique_id: battery_state
