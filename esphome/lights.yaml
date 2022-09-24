@@ -53,16 +53,16 @@ light:
 output:
   - platform: ledc
     id: lights1
-    pin: GPIO13
-
-  - platform: ledc
-    id: lights2
-    pin: GPIO25
-
-  - platform: ledc
-    id: lights3
     pin: GPIO14
 
   - platform: ledc
-    id: lights4
+    id: lights2
     pin: GPIO27
+
+  - platform: ledc
+    id: lights3
+    pin: GPIO26
+
+  - platform: ledc
+    id: lights4
+    pin: GPIO25
