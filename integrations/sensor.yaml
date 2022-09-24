@@ -32,6 +32,14 @@
       value_template: >
         {{ ((states.sensor.battery_voltage.state | float) * (states.sensor.battery_current.state | float)) | round(1) }}
 
+    battery_consumed:
+      unique_id: battery_consumed
+      friendly_name: Battery Consumed
+      unit_of_measurement: Wh
+      device_class: energy
+      value_template: >
+        {{ ((states.sensor.battery_consumed.state | float) * (states.sensor.battery_voltage.state | float)) | round(1) }}
+
     battery_state:
       unique_id: battery_state
       friendly_name: Battery State

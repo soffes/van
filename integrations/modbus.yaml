@@ -57,13 +57,12 @@
       data_type: uint16
 
     - name: Battery Consumed
-      unique_id: system_battery_consumed
+      unique_id: system_battery_consumed_ah
       slave: 100
       address: 845
       data_type: uint16
       scale: 0.1
       precision: 1
-      device_class: energy
       unit_of_measurement: Ah
       state_class: measurement
 
