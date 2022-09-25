@@ -116,6 +116,7 @@
       slave: 227
       address: 33
       data_type: int16
+      scan_interval: 1
 
     - name: AC Load
       unique_id: vebus_output_power_1
@@ -153,6 +154,7 @@
       scale: 0.1
       precision: 1
       unit_of_measurement: "%"
+      scan_interval: 1
 
     # Gray Water Tank
     - name: Gray Water Tank Level
@@ -163,6 +165,7 @@
       scale: 0.1
       precision: 1
       unit_of_measurement: "%"
+      scan_interval: 1
 
     # Urine Tank
     - name: Urine Tank Level
@@ -173,3 +176,4 @@
       scale: 0.1
       precision: 1
       unit_of_measurement: "%"
+      scan_interval: 1

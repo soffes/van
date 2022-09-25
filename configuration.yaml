@@ -6,6 +6,11 @@ automation: !include_dir_merge_list automations
 group: !include integrations/group.yaml
 script: !include scripts.yaml
 
+logger:
+  logs:
+    homeassistant.components.modbus: debug
+    pymodbus.client: debug
+
 # Integrations
 fan: !include integrations/fan.yaml
 homekit: !include integrations/homekit.yaml
