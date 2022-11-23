@@ -8,14 +8,14 @@
       subtype: remote_button_short_press
 
     # Kitchen Button
-    - device_id: dd28c6481f606c0fb8a15d8c122c19f2
+    - device_id: 14fed3ca3288bf6a1fbe19dee0ad9b99
       domain: zha
       platform: device
       type: remote_button_short_press
       subtype: remote_button_short_press
 
-    # Bed Button
-    - device_id: 059bee951caaff25bc67695ef0d50324
+    # Garage Button
+    - device_id: 47edace949b9660a2d003d279cbb0611
       domain: zha
       platform: device
       type: remote_button_short_press
@@ -34,14 +34,14 @@
       subtype: remote_button_double_press
 
     # Kitchen Button
-    - device_id: dd28c6481f606c0fb8a15d8c122c19f2
+    - device_id: 14fed3ca3288bf6a1fbe19dee0ad9b99
       domain: zha
       platform: device
       type: remote_button_double_press
       subtype: remote_button_double_press
 
-    # Bed Button
-    - device_id: 059bee951caaff25bc67695ef0d50324
+    # Garage Button
+    - device_id: 47edace949b9660a2d003d279cbb0611
       domain: zha
       platform: device
       type: remote_button_double_press
