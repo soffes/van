@@ -6,14 +6,12 @@
     for:
       minutes: 10
   action:
-    service: notify.mobile_app_iphone
+    service: notify.notify
     data:
       title: 💧 Running Low
       message: Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%
       data:
         tag: fresh-water
-      target:
-        - person.sam
 
 - alias: Notify when gray water tank is getting full
   trigger:
@@ -23,14 +21,12 @@
     for:
       minutes: 1
   action:
-    service: notify.mobile_app_iphone
+    service: notify.notify
     data:
       title: 💦 Getting Full
-      message: Gray water tank level at {{ states("sensor.fresh_water_tank_level") }}%
+      message: Gray water tank level at {{ states("sensor.gray_water_tank_level") }}%
       data:
         tag: gray-water
-      target:
-        - person.sam
 
 - alias: Notify when urine tank is getting full
   trigger:
@@ -40,14 +36,12 @@
     for:
       minutes: 1
   action:
-    service: notify.mobile_app_iphone
+    service: notify.notify
     data:
       title: 🚽 Empty Urine Tank Now
-      message: Urine tank level at {{ states("sensor.fresh_water_tank_level") }}%
+      message: Urine tank level at {{ states("sensor.urine_tank_level") }}%
       data:
-        tag: gray-water
-      target:
-        - person.sam
+        tag: urine-water
 
 - alias: Close gray water valve
   trigger:
@@ -57,9 +51,15 @@
     for:
       minutes: 1
   action:
-    service: homeassistant.turn_off
-    target:
-      entity_id: switch.gray_water_dump_valve
+    - service: homeassistant.turn_off
+      target:
+        entity_id: switch.gray_water_dump_valve
+    - service: notify.notify
+      data:
+        title: 🔧 Closed gray water drain
+        message: Gray water tank at {{ states("sensor.gray_water_tank_level") }}%
+        data:
+          tag: gray-water
 
 - alias: Close fresh water valve
   trigger:
@@ -69,6 +69,12 @@
     for:
       minutes: 1
   action:
-    service: homeassistant.turn_off
-    target:
-      entity_id: switch.fresh_water_dump_valve
+    - service: homeassistant.turn_off
+      target:
+        entity_id: switch.fresh_water_dump_valve
+    - service: notify.notify
+      data:
+        title: 🔧 Closed fresh water drain
+        message: Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%
+        data:
+          tag: fresh-water
