@@ -1,7 +1,7 @@
 - alias: Toggle ceiling lights
   trigger:
     # Cab Button
-    - device_id: 5b0590b85ec792d6b778d9d9a9ffb6c3
+    - device_id: 11e6b3ac59c55dcc1578de98ba653ed4
       domain: zha
       platform: device
       type: remote_button_short_press
@@ -27,7 +27,7 @@
 - alias: Trigger bright scene
   trigger:
     # Cab Button
-    - device_id: 5b0590b85ec792d6b778d9d9a9ffb6c3
+    - device_id: 11e6b3ac59c55dcc1578de98ba653ed4
       domain: zha
       platform: device
       type: remote_button_double_press
