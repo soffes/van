@@ -1,16 +1,41 @@
+// From weather-card
+const fireEvent = (node, type, detail, options) => {
+  options = options || {};
+  detail = detail === null || detail === undefined ? {} : detail;
+  const event = new Event(type, {
+    bubbles: options.bubbles === undefined ? true : options.bubbles,
+    cancelable: Boolean(options.cancelable),
+    composed: options.composed === undefined ? true : options.composed
+  });
+  event.detail = detail;
+  node.dispatchEvent(event);
+  return event;
+};
+
 class SignalCard extends HTMLElement {
   set hass(hass) {
     if (!this.content) {
       this.innerHTML = `
         <ha-card>
-          <div class="card-content"></div>
+          <div class="card-content">
+            <div class="status">
+              <div class="indicator"></div>
+              <span class="carrier"></span>
+              <span class="network"></span>
+            </div>
+            <div class="bars">
+              <div></div><div></div><div></div><div></div><div></div>
+            </div>
+          </div>
         </ha-card>
         <style>
+          :host {
+            --connected-color: rgb(67, 160, 71);
+          }
+
           .card-content {
             display: flex;
             justify-content: space-between;
-
-            --connected-color: rgb(67, 160, 71);
           }
 
           .indicator {
@@ -74,6 +99,10 @@ class SignalCard extends HTMLElement {
           {
             background-color: rgb(3, 155, 229);
           }
+
+          .carrier, .network, .bars {
+            cursor: pointer;
+          }
         </style>
       `;
       this.content = this.querySelector('div');
@@ -84,20 +113,41 @@ class SignalCard extends HTMLElement {
     const network = hass.states['sensor.peplink_network'];
 
     if (!signal || !carrier || !network) {
-      this.content.innerHTML = '<div class="indicator"></div> Unknown';
-      return;
+      this.content.innerHTML = `
+        <div class="status">
+          <div class="indicator"></div>
+          <span class="carrier">No connection</span>
+          <span class="network"></span>
+        </div>
+        <div class="bars">
+          <div></div><div></div><div></div><div></div><div></div>
+        </div>
+      `;
+    } else {
+      this.content.innerHTML = `
+        <div class="status">
+          <div class="indicator indicator-connected"></div>
+          <span class="carrier">${carrier.state}</span>
+          <span class="network">${network.state}</span>
+        </div>
+        <div class="bars bars-${signal.state}">
+          <div></div><div></div><div></div><div></div><div></div>
+        </div>
+      `;
     }
 
-    this.content.innerHTML = `
-      <div class="status">
-        <div class="indicator indicator-connected"></div>
-        <span class="carrier">${carrier.state}</span>
-        <span class="network">${network.state}</span>
-      </div>
-      <div class="bars bars-${signal.state}">
-        <div></div><div></div><div></div><div></div><div></div>
-      </div>
-    `;
+    const card = this.querySelector('ha-card');
+    card.querySelector('.carrier').addEventListener('click', event => {
+      fireEvent(this, 'hass-more-info', { entityId: 'sensor.peplink_carrier' });
+    });
+
+    card.querySelector('.network').addEventListener('click', event => {
+      fireEvent(this, 'hass-more-info', { entityId: 'sensor.peplink_network' });
+    });
+
+    card.querySelector('.bars').addEventListener('click', event => {
+      fireEvent(this, 'hass-more-info', { entityId: 'sensor.peplink_signal' });
+    });
   }
 
   setConfig(config) {
