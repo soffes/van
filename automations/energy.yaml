@@ -6,14 +6,12 @@
     for:
       minutes: 10
   action:
-    service: notify.mobile_app_iphone
+    service: notify.notify
     data:
       title: 🔋 Fully charged!
       message: Batteries at {{ states("sensor.state_of_charge") }}%
       data:
         tag: batteries
-      target:
-        - person.sam
 
 - alias: Update inverter input boolean
   trigger:
