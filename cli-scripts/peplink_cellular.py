@@ -20,14 +20,19 @@ requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.
 
 # Login
 session.post(f'https://{host}/api/login', params=credentials)
-response = session.get(f'https://{host}/api/status.wan.connection.signal').json()['response']
 
-# Get the signal
-order = response['order']
-for id in order:
-  info = response[str(id)]
-  if type(info) is dict and info['activeSim']:
-    print(info['activeSim']['carrierName'])
+# Get the status
+response = session.get(f'https://{host}/api/status.wan.connection').json()['response']
+for key in response:
+  info = response[key]
+  if info['name'] == 'Cellular':
+    print(json.dumps({
+      'status': info['statusLed'],
+      'message': info['message'],
+      'network': info['cellular']['network'],
+      'carrier': info['cellular']['carrier']['name'],
+      'signal': info['cellular']['signalLevel']
+    }))
     exit(0)
 
-exit(1)
+print('unavailable')

@@ -5,22 +5,10 @@
   command: python3 cli-scripts/peplink_location.py
 
 - platform: command_line
-  name: Peplink Signal
-  unique_id: peplink_signal
-  scan_interval: 300 # 5 minutes
-  command: python3 cli-scripts/peplink_signal.py
-
-- platform: command_line
-  name: Peplink Carrier
-  unique_id: peplink_carrier
-  scan_interval: 300 # 5 minutes
-  command: python3 cli-scripts/peplink_carrier.py
-
-- platform: command_line
-  name: Peplink Network
-  unique_id: peplink_network
-  scan_interval: 300 # 5 minutes
-  command: python3 cli-scripts/peplink_network.py
+  name: Peplink Cellular
+  unique_id: peplink_cellular
+  scan_interval: 60 # 1 minute
+  command: python3 cli-scripts/peplink_cellular.py
 
 - platform: template
   sensors:

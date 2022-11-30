@@ -51,6 +51,24 @@ class SignalCard extends HTMLElement {
             background: var(--connected-color);
           }
 
+          .indicator.indicator-flash {
+            animation-name: flash;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+          }
+
+          @keyframes flash {
+            0% {
+              opacity: 0;
+            }
+            50% {
+              opactiy: 1;
+            }
+            100% {
+              opacity: 0;
+            }
+          }
+
           .carrier {
             font-weight: 500;
           }
@@ -108,9 +126,13 @@ class SignalCard extends HTMLElement {
       this.content = this.querySelector('div');
     }
 
-    const signal = hass.states['sensor.peplink_signal'];
-    const carrier = hass.states['sensor.peplink_carrier'];
-    const network = hass.states['sensor.peplink_network'];
+    const state = JSON.parse(hass.states['sensor.peplink_cellular'].state);
+
+    const status = state['status'];
+    const message = state['message'];
+    const carrier = state['carrier'];
+    const network = state['network'];
+    const signal = state['signal'];
 
     if (!signal || !carrier || !network) {
       this.content.innerHTML = `
@@ -126,27 +148,18 @@ class SignalCard extends HTMLElement {
     } else {
       this.content.innerHTML = `
         <div class="status">
-          <div class="indicator indicator-connected"></div>
-          <span class="carrier">${carrier.state}</span>
-          <span class="network">${network.state}</span>
+          <div class="indicator indicator-connected indicator-${status}"></div>
+          <span class="carrier">${carrier}</span>
+          <span class="network">${network}</span>
         </div>
-        <div class="bars bars-${signal.state}">
+        <div class="bars bars-${signal}">
           <div></div><div></div><div></div><div></div><div></div>
         </div>
       `;
     }
 
-    const card = this.querySelector('ha-card');
-    card.querySelector('.carrier').addEventListener('click', event => {
-      fireEvent(this, 'hass-more-info', { entityId: 'sensor.peplink_carrier' });
-    });
-
-    card.querySelector('.network').addEventListener('click', event => {
-      fireEvent(this, 'hass-more-info', { entityId: 'sensor.peplink_network' });
-    });
-
-    card.querySelector('.bars').addEventListener('click', event => {
-      fireEvent(this, 'hass-more-info', { entityId: 'sensor.peplink_signal' });
+    const card = this.querySelector('ha-card').addEventListener('click', event => {
+      fireEvent(this, 'hass-more-info', { entityId: 'sensor.peplink_cellular' });
     });
   }
 
