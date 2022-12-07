@@ -50,6 +50,11 @@
     below: 1
     for:
       minutes: 1
+  condition:
+    alias: Gray water valve is open
+    condition: state
+    entity_id: switch.gray_water_dump_valve
+    state: "on"
   action:
     - service: homeassistant.turn_off
       target:
@@ -68,6 +73,11 @@
     below: 1
     for:
       minutes: 1
+  condition:
+    alias: Fresh water valve is open
+    condition: state
+    entity_id: switch.fresh_water_dump_valve
+    state: "on"
   action:
     - service: homeassistant.turn_off
       target:
