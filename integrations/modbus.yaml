@@ -66,6 +66,14 @@
       unit_of_measurement: Ah
       state_class: measurement
 
+    - name: AC Load
+      unique_id: system_ac_consumption_l1
+      slave: 100
+      address: 817
+      data_type: uint16
+      unit_of_measurement: W
+      state_class: measurement
+
     # MPPT
     - name: Solar Yield Today
       unique_id: solarcharger_yield_today
@@ -118,13 +126,15 @@
       data_type: int16
       scan_interval: 5
 
-    - name: AC Load
-      unique_id: vebus_output_power_1
+    - name: Inverter Input Voltage
+      unique_id: vebus_input_voltage_1
       slave: 227
-      address: 23
-      data_type: int16
+      address: 26
+      data_type: uint16
+      scale: 0.01
+      precision: 2
       device_class: power
-      unit_of_measurement: W
+      unit_of_measurement: V
       state_class: measurement
 
     - name: Shore Power Current Limit

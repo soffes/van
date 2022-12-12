@@ -38,3 +38,19 @@
         {% else %}
           4
         {% endif %}
+
+- alias: Automatically turn off inverter when there is no load
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.ac_load
+    below: 2
+    for:
+      minutes: 2
+  condition:
+    condition: state
+    entity_id: input_boolean.inverter_auto_off
+    state: "on"
+  action:
+    service: homeassistant.turn_off
+    data:
+      entity_id: input_boolean.inverter
