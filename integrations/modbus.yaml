@@ -126,17 +126,6 @@
       data_type: int16
       scan_interval: 5
 
-    - name: Inverter Input Voltage
-      unique_id: vebus_input_voltage_1
-      slave: 227
-      address: 26
-      data_type: uint16
-      scale: 0.01
-      precision: 2
-      device_class: power
-      unit_of_measurement: V
-      state_class: measurement
-
     - name: Shore Power Current Limit
       unique_id: vebus_active_input_current_limit
       slave: 227
