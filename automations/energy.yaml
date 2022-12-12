@@ -43,9 +43,9 @@
   trigger:
     platform: numeric_state
     entity_id: sensor.ac_load
-    below: 2
+    below: 35
     for:
-      minutes: 2
+      minutes: 5
   condition:
     condition: state
     entity_id: input_boolean.inverter_auto_off
