@@ -1,0 +1,68 @@
+esphome:
+  name: cab
+
+esp32:
+  board: esp-wrover-kit
+  framework:
+    type: arduino
+
+logger:
+  level: INFO
+
+api:
+  encryption:
+    key: !secret esphome_cab_key
+
+ota:
+  password: !secret esphome_cab_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  power_save_mode: NONE
+  fast_connect: true
+
+web_server:
+  local: true
+  ota: false
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO4
+      mode:
+        input: true
+        pullup: true
+    name: "Cab Button 1 Up"
+  - platform: gpio
+    pin:
+      number: GPIO16
+      mode:
+        input: true
+        pullup: true
+    name: "Cab Button 1 Down"
+  - platform: gpio
+    pin:
+      number: GPIO17
+      mode:
+        input: true
+        pullup: true
+    name: "Cab Button 2 Up"
+  - platform: gpio
+    pin:
+      number: GPIO5
+      mode:
+        input: true
+        pullup: true
+    name: "Cab Button 2 Down"
+
+switch:
+  - platform: gpio
+    name: Flood Lights
+    pin: GPIO19
+    device_class: switch
+
+  - platform: gpio
+    name: Trail Lights
+    pin: GPIO18
+    device_class: switch
