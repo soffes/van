@@ -10,7 +10,8 @@ logger:
   level: INFO
 
 api:
-  password: !secret esphome_garage_password
+  encryption:
+    key: !secret esphome_garage_key
 
 ota:
   password: !secret esphome_garage_password

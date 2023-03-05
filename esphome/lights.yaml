@@ -10,7 +10,8 @@ logger:
   level: INFO
 
 api:
-  password: !secret esphome_lights_password
+  encryption:
+    key: !secret esphome_lights_key
 
 ota:
   password: !secret esphome_lights_password

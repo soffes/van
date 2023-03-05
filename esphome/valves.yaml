@@ -13,7 +13,8 @@ logger:
   level: INFO
 
 api:
-  password: !secret esphome_valves_password
+  encryption:
+    key: !secret esphome_valves_key
 
 ota:
   password: !secret esphome_valves_password
