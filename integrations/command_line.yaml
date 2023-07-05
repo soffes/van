@@ -1,0 +1,11 @@
+- sensor:
+    name: Peplink Location
+    unique_id: peplink_location
+    scan_interval: 300 # 5 minutes
+    command: python3 cli-scripts/peplink_location.py
+
+- sensor:
+    name: Peplink Cellular
+    unique_id: peplink_cellular
+    scan_interval: 60 # 1 minute
+    command: python3 cli-scripts/peplink_cellular.py

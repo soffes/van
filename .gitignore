@@ -29,3 +29,4 @@ blueprints/script/homeassistant
 /custom_components/hacs
 
 /.vscode
+/node-red

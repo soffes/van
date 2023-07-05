@@ -1,0 +1,11 @@
+sensor:
+  - name: "Ambient Temperature"
+    unique_id: van_ambient_temperature
+    state_topic: "CAR1/Amb_Temp"
+    unit_of_measurement: "C"
+    value_template: "{{ value_json.amb_temp }}"
+  - name: "Fuel Level"
+    unique_id: van_fuel_level
+    state_topic: "CAR1/Fuel_Level"
+    unit_of_measurement: "%"
+    value_template: "{{ value_json.fuel_level }}"
