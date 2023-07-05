@@ -28,41 +28,56 @@ web_server:
 
 binary_sensor:
   - platform: gpio
+    name: "Cab Button 1 Top"
     pin:
-      number: GPIO4
+      number: GPIO16 # Blue
       mode:
         input: true
         pullup: true
-    name: "Cab Button 1 Up"
+    on_press:
+      then:
+        - light.toggle: trail_lights
   - platform: gpio
+    name: "Cab Button 1 Bottom"
     pin:
-      number: GPIO16
+      number: GPIO17 # Red
       mode:
         input: true
         pullup: true
-    name: "Cab Button 1 Down"
+    on_press:
+      then:
+        - light.toggle: flood_lights
   - platform: gpio
+    name: "Cab Button 2 Top"
     pin:
-      number: GPIO17
+      number: GPIO5 # Yellow
       mode:
         input: true
         pullup: true
-    name: "Cab Button 2 Up"
   - platform: gpio
+    name: "Cab Button 2 Bottom"
     pin:
-      number: GPIO5
+      number: GPIO18 # White
       mode:
         input: true
         pullup: true
-    name: "Cab Button 2 Down"
 
-switch:
-  - platform: gpio
-    name: Flood Lights
-    pin: GPIO19
-    device_class: switch
-
-  - platform: gpio
+light:
+  - platform: binary
     name: Trail Lights
-    pin: GPIO18
-    device_class: switch
+    id: trail_lights
+    icon: mdi:car-light-high
+    output: trail_lights_output
+  - platform: binary
+    name: Flood Lights
+    id: flood_lights
+    icon: mdi:track-light
+    output: flood_lights_output
+
+output:
+  - platform: gpio
+    id: trail_lights_output
+    pin: GPIO19
+  - platform: gpio
+    id: flood_lights_output
+    pin: GPIO21
