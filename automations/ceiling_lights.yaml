@@ -1,11 +1,11 @@
 - alias: Toggle ceiling lights
   trigger:
     # Cab Button
-    - device_id: 11e6b3ac59c55dcc1578de98ba653ed4
-      domain: zha
+    - type: turned_on
       platform: device
-      type: remote_button_short_press
-      subtype: remote_button_short_press
+      device_id: e4c989fae2c2a11950792e2a60190c1a
+      entity_id: 9ed3cdcd2281b235516d8db78f5741df
+      domain: binary_sensor
 
     # Kitchen Button
     - device_id: 14fed3ca3288bf6a1fbe19dee0ad9b99

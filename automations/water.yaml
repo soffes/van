@@ -9,7 +9,7 @@
     service: notify.notify
     data:
       title: 💧 Running Low
-      message: Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%
+      message: Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%.
       data:
         tag: fresh-water
 
@@ -24,7 +24,7 @@
     service: notify.notify
     data:
       title: 💦 Getting Full
-      message: Gray water tank level at {{ states("sensor.gray_water_tank_level") }}%
+      message: Gray water tank at {{ states("sensor.gray_water_tank_level") }}%.
       data:
         tag: gray-water
 
@@ -39,7 +39,7 @@
     service: notify.notify
     data:
       title: 🚽 Empty Urine Tank Now
-      message: Urine tank level at {{ states("sensor.urine_tank_level") }}%
+      message: Urine tank level at {{ states("sensor.urine_tank_level") }}%.
       data:
         tag: urine-water
 
@@ -62,7 +62,7 @@
     - service: notify.notify
       data:
         title: 🔧 Closed gray water drain
-        message: Gray water tank at {{ states("sensor.gray_water_tank_level") }}%
+        message: Gray water tank at {{ states("sensor.gray_water_tank_level") }}%.
         data:
           tag: gray-water
 
@@ -88,3 +88,21 @@
         message: Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%
         data:
           tag: fresh-water
+
+- alias: Toggle gray water valve
+  trigger:
+    type: turned_on
+    platform: device
+    device_id: e4c989fae2c2a11950792e2a60190c1a
+    entity_id: 0911780fecaffc646357a434ae6982a4
+    domain: binary_sensor
+  action:
+    - service: homeassistant.toggle
+      data:
+        entity_id: switch.gray_water_dump_valve
+    - service: notify.notify
+      data:
+        title: 🔧 {% if states("switch.gray_water_dump_valve") == "on" %}Opened{% else %}Closed{% endif %} gray water drain
+        message: Cab button pressed. Gray water tank at {{ states("sensor.gray_water_tank_level") }}%.
+        data:
+          tag: gray-water
