@@ -6,7 +6,7 @@ import json
 # I couldn't figure out how to send the secrets in the command_line sensor. If
 # you get get local access to my network, you are welcome to use this readonly
 # user to query things about my router. You earned it.
-host = '10.0.0.1'
+host = '10.0.1.1'
 credentials = {
     'username': 'readonly',
     'password': 'xfXWBiDRoVf8MLE4mkXsgmUeHGRJQdir'

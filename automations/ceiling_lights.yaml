@@ -1,25 +1,11 @@
 - alias: Toggle ceiling lights
   trigger:
-    # Cab Button
-    - type: turned_on
-      platform: device
-      device_id: e4c989fae2c2a11950792e2a60190c1a
-      entity_id: 9ed3cdcd2281b235516d8db78f5741df
-      domain: binary_sensor
-
     # Kitchen Button
-    - device_id: 14fed3ca3288bf6a1fbe19dee0ad9b99
-      domain: zha
+    - device_id: 0a443804fbfafdccd46b0b17c8640de6
+      domain: deconz
       platform: device
       type: remote_button_short_press
-      subtype: remote_button_short_press
-
-    # Garage Button
-    - device_id: 47edace949b9660a2d003d279cbb0611
-      domain: zha
-      platform: device
-      type: remote_button_short_press
-      subtype: remote_button_short_press
+      subtype: button_1
   action:
     service: homeassistant.toggle
     entity_id: group.ceiling_lights

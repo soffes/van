@@ -30,3 +30,4 @@ blueprints/script/homeassistant
 
 /.vscode
 /node-red
+/zigbee2mqtt
