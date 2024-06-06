@@ -1,37 +1,21 @@
-- alias: Toggle ceiling lights
+- alias: Kitchen Switch - On
   trigger:
-    # Kitchen Button
-    - device_id: 0a443804fbfafdccd46b0b17c8640de6
-      domain: deconz
-      platform: device
-      type: remote_button_short_press
-      subtype: button_1
-  action:
-    service: homeassistant.toggle
-    entity_id: group.ceiling_lights
-
-- alias: Trigger bright scene
-  trigger:
-    # Cab Button
-    - device_id: 11e6b3ac59c55dcc1578de98ba653ed4
-      domain: zha
-      platform: device
-      type: remote_button_double_press
-      subtype: remote_button_double_press
-
-    # Kitchen Button
-    - device_id: 14fed3ca3288bf6a1fbe19dee0ad9b99
-      domain: zha
-      platform: device
-      type: remote_button_double_press
-      subtype: remote_button_double_press
-
-    # Garage Button
-    - device_id: 47edace949b9660a2d003d279cbb0611
-      domain: zha
-      platform: device
-      type: remote_button_double_press
-      subtype: remote_button_double_press
+    - platform: device
+      domain: mqtt
+      device_id: 971f3643ab48f8458c9e2eb2aa34270b
+      type: action
+      subtype: press_4
   action:
     service: homeassistant.turn_on
     entity_id: scene.bright
+
+- alias: Kitchen Switch - Off
+  trigger:
+    - platform: device
+      domain: mqtt
+      device_id: 971f3643ab48f8458c9e2eb2aa34270b
+      type: action
+      subtype: press_3
+  action:
+    service: homeassistant.turn_on
+    entity_id: scene.goodnight
