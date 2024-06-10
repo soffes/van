@@ -54,15 +54,14 @@
     service: homeassistant.turn_off
     data:
       entity_id: input_boolean.inverter
-
-- alias: Inverter Button
-  trigger:
-    device_id: ff01923363189fb46acf57a2ac4034e7
-    domain: zha
-    platform: device
-    type: remote_button_short_press
-    subtype: remote_button_short_press
-  action:
-    service: homeassistant.toggle
-    data:
-      entity_id: input_boolean.inverter
+# - alias: Inverter Button
+#   trigger:
+#     device_id: ff01923363189fb46acf57a2ac4034e7
+#     domain: zha
+#     platform: device
+#     type: remote_button_short_press
+#     subtype: remote_button_short_press
+#   action:
+#     service: homeassistant.toggle
+#     data:
+#       entity_id: input_boolean.inverter

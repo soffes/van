@@ -1,11 +1,18 @@
 sensor:
-  - name: "Ambient Temperature"
-    unique_id: van_ambient_temperature
-    state_topic: "CAR1/Amb_Temp"
-    unit_of_measurement: "C"
-    value_template: "{{ value_json.amb_temp }}"
-  - name: "Fuel Level"
-    unique_id: van_fuel_level
-    state_topic: "CAR1/Fuel_Level"
+  - name: "Odometer"
+    unique_id: van_odometer
+    state_topic: wican/1091a83e9b3d/can/rx
+    unit_of_measurement: "km"
+    value_template: "{{ value_json.Odometer }}"
+
+  - name: "Fuel Tank Level"
+    unique_id: van_fuel_tank_level
+    state_topic: wican/1091a83e9b3d/can/rx
     unit_of_measurement: "%"
-    value_template: "{{ value_json.fuel_level }}"
+    value_template: "{{ value_json.FuelLevel }}"
+
+  - name: "Ambient Temp"
+    unique_id: van_ambient_temperature
+    state_topic: wican/1091a83e9b3d/can/rx
+    unit_of_measurement: "ºF"
+    value_template: "{{ value_json.AmbientTemp }}"

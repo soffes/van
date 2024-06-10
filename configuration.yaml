@@ -13,7 +13,6 @@ logger:
 
 # Integrations
 command_line: !include integrations/command_line.yaml
-fan: !include integrations/fan.yaml
 homekit: !include integrations/homekit.yaml
 input_boolean: !include integrations/input_boolean.yaml
 input_number: !include integrations/input_number.yaml
@@ -22,4 +21,3 @@ modbus: !include integrations/modbus.yaml
 mqtt: !include integrations/mqtt.yaml
 scene: !include integrations/scene.yaml
 sensor: !include integrations/sensor.yaml
-switch: !include integrations/switch.yaml

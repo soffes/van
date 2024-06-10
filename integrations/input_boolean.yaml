@@ -5,7 +5,3 @@ inverter:
 inverter_auto_off:
   name: Inverter Auto Off
   icon: mdi:flash-auto
-
-ceiling_fan_on_off:
-  name: Ceiling Fan On/Off
-  icon: mdi:fan

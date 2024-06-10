@@ -1,12 +1,17 @@
-- filter:
+- name: Home Assistant Bridge
+  port: 21065
+  filter:
     include_domains:
-      - input_boolean
       - light
-      - switch
+    include_entities:
+      - input_boolean.inverter
+      - switch.fresh_water_dump_valve
+      - switch.gray_water_dump_valve
+      - switch.hot_water_heater
     exclude_entities:
       - light.hot_water_heater_on_off
-  # entity_config:
-  #   switch.fresh_water_dump_valve:
-  #     type: valve
-  #   switch.gray_water_dump_valve:
-  #     type: valve
+  entity_config:
+    switch.fresh_water_dump_valve:
+      type: valve
+    switch.gray_water_dump_valve:
+      type: valve
