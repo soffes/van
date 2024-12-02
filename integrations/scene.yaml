@@ -1,4 +1,5 @@
 - name: Bedtime
+  icon: mdi:bed
   entities:
     light.ceiling_lights_1:
       state: "off"
@@ -11,6 +12,7 @@
       state: "off"
 
 - name: Goodnight
+  icon: mdi:weather-night
   entities:
     light.ceiling_lights_1:
       state: "off"
@@ -22,6 +24,7 @@
       state: "off"
 
 - name: Bright
+  icon: mdi:lightbulb-on
   entities:
     light.ceiling_lights_1:
       state: "on"
