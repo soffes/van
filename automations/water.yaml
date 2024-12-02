@@ -8,8 +8,8 @@
   action:
     service: notify.notify
     data:
-      title: 💧 Running Low
-      message: Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%.
+      title: 🚐 Running Low
+      message: 💧 Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%.
       data:
         tag: fresh-water
 
@@ -23,8 +23,8 @@
   action:
     service: notify.notify
     data:
-      title: 💦 Getting Full
-      message: Gray water tank at {{ states("sensor.gray_water_tank_level") }}%.
+      title: 🚐 Getting Full
+      message: 💦 Gray water tank at {{ states("sensor.gray_water_tank_level") }}%.
       data:
         tag: gray-water
 
@@ -38,8 +38,8 @@
   action:
     service: notify.notify
     data:
-      title: 🚽 Empty Urine Tank Now
-      message: Urine tank level at {{ states("sensor.urine_tank_level") }}%.
+      title: 🚐 Empty Urine Tank Now
+      message: 🚽 Urine tank level at {{ states("sensor.urine_tank_level") }}%.
       data:
         tag: urine-water
 
@@ -61,8 +61,8 @@
         entity_id: switch.gray_water_dump_valve
     - service: notify.notify
       data:
-        title: 🔧 Closed gray water drain
-        message: Gray water tank at {{ states("sensor.gray_water_tank_level") }}%.
+        title: 🚐 Closed gray water drain
+        message: 🔧 Gray water tank at {{ states("sensor.gray_water_tank_level") }}%.
         data:
           tag: gray-water
 
@@ -84,8 +84,8 @@
         entity_id: switch.fresh_water_dump_valve
     - service: notify.notify
       data:
-        title: 🔧 Closed fresh water drain
-        message: Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%
+        title: 🚐 Closed fresh water drain
+        message: 🔧 Fresh water tank at {{ states("sensor.fresh_water_tank_level") }}%
         data:
           tag: fresh-water
 
@@ -102,7 +102,7 @@
         entity_id: switch.gray_water_dump_valve
     - service: notify.notify
       data:
-        title: 🔧 {% if states("switch.gray_water_dump_valve") == "on" %}Opened{% else %}Closed{% endif %} gray water drain
-        message: Cab button pressed. Gray water tank at {{ states("sensor.gray_water_tank_level") }}%.
+        title: 🚐 {% if states("switch.gray_water_dump_valve") == "on" %}Opened{% else %}Closed{% endif %} gray water drain
+        message: 🔧 Cab button pressed. Gray water tank at {{ states("sensor.gray_water_tank_level") }}%.
         data:
           tag: gray-water

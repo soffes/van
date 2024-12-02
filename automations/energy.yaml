@@ -8,8 +8,8 @@
   action:
     service: notify.notify
     data:
-      title: 🔋 Fully charged!
-      message: Batteries at {{ states("sensor.state_of_charge") }}%
+      title: 🚐 Fully charged!
+      message: 🔋 Batteries at {{ states("sensor.state_of_charge") }}%
       data:
         tag: batteries
 
