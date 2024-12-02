@@ -14,6 +14,7 @@ api:
     key: !secret esphome_cab_key
 
 ota:
+  platform: esphome
   password: !secret esphome_cab_password
 
 wifi:
